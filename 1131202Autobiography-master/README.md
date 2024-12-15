@@ -1,16 +1,45 @@
-# autobiography1131
+# Autobiography Flutter App ✨
 
-A new Flutter project.
+Welcome to the **Autobiography App** — a Flutter project that combines engaging visuals, smooth navigation, and dynamic storytelling to showcase my journey.
 
-## Getting Started
+## 📝 About Me
 
-This project is a starting point for a Flutter application.
+**Name:** Sanzio Evan Filbert (吴堅榮)  
+**Birthdate:** June 30, 2005  
+**Age:** 19 years old  
+**Nationality:** Indonesian  
 
-A few resources to get you started if this is your first Flutter project:
+**Hobbies:**  
+- ☘️ Playing billiards  
+- 🏀 Basketball  
+- 🎮 Playing games  
+- 🎵 Listening to music  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Education:**  
+Second-year Computer Science and Information Engineering student at **National Kaohsiung University of Science and Technology (NKUST), Taiwan**  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Goal:**  
+To become a skilled programmer contributing to meaningful tech innovations  
+
+---
+
+## 📚 Learning Journey
+
+Each milestone reflects my passion for growth and success:
+
+- 🌐 Improve English  
+- 💻 Master programming  
+- 🏆 Obtain certifications  
+- 🤝 Build strong relationships  
+
+---
+
+## 🚀 Future Plans
+
+- Develop cutting-edge applications that solve real-world problems  
+- Continue enhancing my programming skills in both frontend and backend technologies  
+- Collaborate with global tech teams to deliver innovative solutions  
+
+---
+
+*Crafted with ❤️ by Sanzio Evan Filbert*

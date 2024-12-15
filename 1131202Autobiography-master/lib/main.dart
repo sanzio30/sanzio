@@ -12,18 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Autobiography',
+      title: 'Autobiography App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      theme: ThemeData(primarySwatch: Colors.green),
       home: HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,15 +35,20 @@ class _HomePageState extends State<HomePage> {
     Screen4(),
   ];
 
-  int previousIndex = 0;
   int currentIndex = 0;
+
+  void playAudio(int index) {
+    player.stop();
+    player.play(AssetSource('${index + 1}.mp3'));
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (currentIndex == 0) player.play(AssetSource("1.mp3"));
+    if (currentIndex == 0) playAudio(0);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('我的自傳'),
+        title: Text('My Autobiography'),
         centerTitle: true,
       ),
       body: tabs[currentIndex],
@@ -53,54 +56,37 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
         selectedFontSize: 18,
         unselectedFontSize: 14,
         iconSize: 30,
         currentIndex: currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: currentIndex == 0
-                ? Image.asset('assets/f1.jpg', width: 40, height: 40,)
-                : Image.asset('assets/f1.jpg', width: 30, height: 30,),
-            label: '👤 自我介紹',
+            icon: Image.asset(
+              'assets/f1.jpg',
+              width: currentIndex == 0 ? 40 : 30,
+              height: currentIndex == 0 ? 40 : 30,
+            ),
+            label: 'Introduction',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: '📚 學習歷程',
+            label: 'Learning Journey',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.scale_outlined),
-            label: '📋 學習計畫',
+            label: 'Learning Plan',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.engineering),
-            label: '🛠️ 專業方向',
+            label: 'Specialization',
           ),
         ],
         onTap: (index) {
           setState(() {
-            previousIndex = currentIndex;
             currentIndex = index;
-            if (index == 0) {
-              if (previousIndex == currentIndex) player.resume();
-              player.stop();
-              player.play(AssetSource("1.mp3"));
-            }
-            if (index == 1) {
-              if (previousIndex == currentIndex) player.resume();
-              player.stop();
-              player.play(AssetSource("2.mp3"));
-            }
-            if (index == 2) {
-              if (previousIndex == currentIndex) player.resume();
-              player.stop();
-              player.play(AssetSource("3.mp3"));
-            }
-            if (index == 3) {
-              if (previousIndex == currentIndex) player.resume();
-              player.stop();
-              player.play(AssetSource("4.mp3"));
-            }
+            playAudio(index);
           });
         },
       ),
@@ -109,29 +95,27 @@ class _HomePageState extends State<HomePage> {
 }
 
 class Screen1 extends StatelessWidget {
-  Screen1({super.key});
-
-  String s1 = 'My name is Sanzio Evan Filbert 吳堅榮. I was born in Surabaya on June 30, 2005. I am 19 years old and an Indonesian native whose first language is Bahasa Indonesia. \n\n'
-      'I love playing billiards 🎱, basketball 🏀, playing games 🎮, and listening to music 🎧. Currently, I am a college student at National Kaohsiung University of Science and Technology (NKUST) in Taiwan, majoring in Computer Science and Information Engineering. \n\n'
-      'I am in my second year at NKUST. My future plan is to become a great programmer, contributing to the tech industry and solving meaningful problems through coding and innovation.';
+  final String autobiography =
+      'I was born into an ordinary but happy family. My father is a public servant working for the power company, and my mother is a homemaker. My younger brother and I are still in school. My parents raised us in a democratic way, encouraging us to be independent, proactive in learning, and to accumulate life experiences. They provide timely encouragement and advice, emphasizing two things: maintaining good health and focusing on academics. Without a healthy body, even the greatest talents and ambitions cannot be realized.'
+      'During elementary school, I was active and energetic. My academic performance was average, but I excelled in extracurricular activities, serving as a class leader and participating in the school band and patrol team. I was also selected for the school high jump team.'
+      'After graduating from elementary school, I attended a private middle school with strict rules, which helped me become more disciplined and mature. In middle school, I represented my school in a county-level award ceremony and delivered a speech at the graduation ceremony.'
+      'In high school, every day felt fulfilling and joyful. The students were known for balancing hard work and fun. I constantly pushed myself to achieve this balance. In academics, I maintained good grades by paying close attention in class, thoroughly understanding the concepts taught, and asking questions whenever I had doubts. This approach allowed me to complete my studies efficiently and have extra time for extracurricular activities. Among all subjects, I particularly enjoyed math, chemistry, and biology. Math and chemistry honed my organizational and analytical skills, while biology provided insights into human life and mysteries.';
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Title
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 30, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
             child: Text(
               'Who Am I',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
-          // Autobiography content
           Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.fromLTRB(30, 0, 30, 50),
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.fromLTRB(30, 0, 30, 50),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 3),
               borderRadius: BorderRadius.circular(10),
@@ -140,55 +124,36 @@ class Screen1 extends StatelessWidget {
               ],
             ),
             child: Text(
-              s1,
+              autobiography,
               style: TextStyle(fontSize: 20),
             ),
           ),
           SizedBox(height: 15),
-          Container(
-            color: Colors.redAccent,
-            child: Image.asset('assets/f1.jpg'),
-            height: 200,
-            width: 200,
-          ),
+          Image.asset('assets/f1.jpg', height: 200, width: 200),
           SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                      style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                    image: AssetImage('assets/f1.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                      style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                    image: AssetImage('assets/f1.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              _buildImageContainer('assets/f1.jpg'),
+              _buildImageContainer('assets/f1.jpg'),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildImageContainer(String imagePath) {
+    return Container(
+      width: 150,
+      height: 150,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.purple, width: 2),
+        borderRadius: BorderRadius.circular(30),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -198,8 +163,9 @@ class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Text('📚 學習歷程 (Learning Journey)'),
+      child: Text(
+        'Learning Journey',
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -208,31 +174,20 @@ class Screen2 extends StatelessWidget {
 class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text('📋 學習計畫 (Learning Plan)'),
-            ],
-          ),
+          Text('First Year Goals', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          ListView(
+            shrinkWrap: true,
             children: [
-              Container(
-                height: 200,
-                width: 200,
-                child: ListView(
-                  children: [
-                    Text('🌍 1. 學好英文 (Improve English)'),
-                    Text('💻 2. 組合語言 (Learn Programming)'),
-                    Text('🏆 3. 考取證照 (Obtain Certifications)'),
-                    Text('🤝 4. 人際關係 (Build Relationships)'),
-                  ],
-                ),
-              ),
+              Text('1. Improve English proficiency'),
+              Text('2. Learn assembly language'),
+              Text('3. Obtain certifications'),
+              Text('4. Build interpersonal skills'),
             ],
           ),
         ],
@@ -245,8 +200,9 @@ class Screen4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Text('🛠️ 專業方向 (Professional Focus)'),
+      child: Text(
+        'Specialization',
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
