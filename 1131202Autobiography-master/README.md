@@ -19,13 +19,13 @@ Welcome to the **Autobiography App** — a Flutter project that combines engagin
 Second-year Computer Science and Information Engineering student at **National Kaohsiung University of Science and Technology (NKUST), Taiwan** 
 
 **Career:**  
-Currently working at **The Lees Hotel**, gaining valuable real-world experience alongside my studies.
+💼 Currently working at **The Lees Hotel**, gaining valuable real-world experience alongside my studies.
 
 **Languages:**  
-- **Native Language:** Bahasa Indonesia  
-- **Most Used Language:** Chinese Traditional (as I study in Taiwan)  
-- **Additional Language:** Javanese (as I was born in East Java, Indonesia)  
-- **Other Language:** English  
+- 🌏 **Native Language:** Bahasa Indonesia  
+- 🀄 **Most Used Language:** Chinese Traditional (as I study in Taiwan)  
+- 🌱 **Additional Language:** Javanese (as I was born in East Java, Indonesia)  
+- 🌍 **Other Language:** English  
 
 **Goal:**  
 To become a skilled programmer contributing to meaningful tech innovations.  
