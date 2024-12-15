@@ -30,7 +30,8 @@ Currently pursuing my studies in Taiwan, gaining valuable international experien
 
 Each milestone reflects my passion for growth and success:
 
-- 🌐 Improve English  
+- 🌐 Improve English
+- 🈵 Improve my Chinese language skills  
 - 💻 Master programming  
 - 🏆 Obtain certifications  
 - 🤝 Build strong relationships  
